@@ -67,3 +67,23 @@ class RGB:
     def set(self, i, color):
         self.led[i] = color
         self.led.write()
+
+
+# ---------------- Buzzer ----------------
+class Buzzer:
+    def __init__(self, pin=4, enabled=True):
+        self.buzzer = Pin(pin, Pin.OUT)
+        self.enabled = enabled
+
+    def beep(self, duration=0.2):
+        if self.enabled:
+            self.buzzer.on()
+            time.sleep(duration)
+            self.buzzer.off()
+
+    def on(self):
+        if self.enabled:
+            self.buzzer.on()
+
+    def off(self):
+        self.buzzer.off()
